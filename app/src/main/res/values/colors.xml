@@ -5,4 +5,7 @@
     <color name="colorAccent">#F1FAFD</color>
     <color name="anotherColor">#B400BFFD</color>
     <color name="anotherColorDark">#008CB9</color>
+    <color name="buttonGradientLight">#B44DD3FF</color>
+    <color name="buttonGradientLightDisable">#564DD3FF</color>
+    <color name="buttonGradientDarkDisable">#5600AFFF</color>
 </resources>

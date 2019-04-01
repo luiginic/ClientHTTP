@@ -2,4 +2,9 @@
     <string name="app_name">ClientHTTP</string>
     <string name="profileInfo">Profile info</string>
     <string name="name_goes_here">Name goes here</string>
+    <string name="treatment">View treatment</string>
+    <string name="reactions">Reactions</string>
+    <string name="title_activity_stats_screen">StatsScreen</string>
+    <string name="my_apointments">My apointments</string>
+    <string name="make_an_apointment">Make an apointment</string>
 </resources>
