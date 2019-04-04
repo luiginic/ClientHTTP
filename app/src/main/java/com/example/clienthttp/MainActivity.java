@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewTreatmentBtn = findViewById(R.id.viewTreatmentBtn);
-        if(viewTreatmentBtn.isEnabled()==false)
+        if(!viewTreatmentBtn.isEnabled())
             viewTreatmentBtn.setBackgroundResource(R.drawable.button_gradient_disabled);
         else viewTreatmentBtn.setBackgroundResource(R.drawable.button_gradient);
         String jsonURL = "https://api.myjson.com/bins/arg9u";
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         avatar.setImageBitmap(bitmap);
                         Log.d(TAG,"Avatar is set");
                     }
-                }, 0, 0, null,
+                }, 0, 0, Bitmap.Config.RGB_565,
                 new Response.ErrorListener() {
                     public void onErrorResponse(VolleyError error) {
                         avatar.setImageResource(R.drawable.no_image_user);

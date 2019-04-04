@@ -7,4 +7,5 @@
     <string name="title_activity_stats_screen">StatsScreen</string>
     <string name="my_apointments">My apointments</string>
     <string name="make_an_apointment">Make an apointment</string>
+    <string name="this_is_the_logo">This is the logo</string>
 </resources>
