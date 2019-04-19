@@ -23,4 +23,5 @@
     </string>
     <string name="pacient_id">Pacient ID</string>
     <string name="continueBtn">Continue</string>
+    <string name="log_in">Log in</string>
 </resources>
