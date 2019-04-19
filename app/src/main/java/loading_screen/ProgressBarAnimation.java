@@ -37,11 +37,11 @@ public class ProgressBarAnimation extends Animation {
     private float from;
     private float to;
 
-    private PersonalData personalData = new PersonalData();
+    private PersonalData personalData;
     private Intent intent;
     private boolean persDat;
 
-    public ProgressBarAnimation(Context context,ProgressBar progressBar,float from,float to){
+    public ProgressBarAnimation(Context context,ProgressBar progressBar,float from,float to,PersonalData personalID){
         this.context = context;
         this.progressBar = progressBar;
         this.from = from;
@@ -49,6 +49,7 @@ public class ProgressBarAnimation extends Animation {
         persDat = false;
         setFields();
         intent = new Intent(context,MainActivity.class);
+        personalData.setPacientCode(personalID.getPacientCode());
 
 
     }

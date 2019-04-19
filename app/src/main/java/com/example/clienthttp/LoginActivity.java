@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static Context ctx;
     private PersonalData personalData;
-
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         // Set up the login form.
 
         ctx = this.getApplicationContext();
-
+        intent = new Intent(this, loading_screen.class);
         pacientID = (TextInputEditText) findViewById(R.id.pacient_id);
         pacientID.setHint(R.string.pacient_id);
 
@@ -67,8 +67,10 @@ public class LoginActivity extends AppCompatActivity {
         if(this.validateCode(code)) {
             personalData.setPacientCode(code);
             for (String it : DUMMY_CREDENTIALS) {
-                if (it.equals(personalData.getPacientCode()))
-                    this.startActivity(new Intent(this, loading_screen.class));
+                if (it.equals(personalData.getPacientCode())) {
+                    intent.putExtra("account",personalData);
+                            this.startActivity(intent);
+                }
                 else pacientID.setError("The provided ID is incorect!");
             }
         } else {
