@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="362dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/pacient_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/pacient_id"
+                        android:inputType="text"
+                        />
+                </android.support.design.widget.TextInputLayout>
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/buttonContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                <Button
+                    android:id="@+id/continueBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/button_gradient"
+                    android:elevation="10dp"
+
+                    android:text="@string/continueBtn"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/reportChangesBtn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/reportChangesBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/button_gradient"
+                    android:elevation="10dp"
+                    android:text="@string/make_an_apointment"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/continueBtn" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</android.support.constraint.ConstraintLayout>
