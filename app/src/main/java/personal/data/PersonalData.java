@@ -1,10 +1,12 @@
 package personal.data;
 
 
+
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-public class PersonalData {
+public class PersonalData implements Serializable {
     private String cnp;
     private String name;
     private String pacientCode;
@@ -19,12 +21,13 @@ public class PersonalData {
         setCnp(cnp);
         setName(name);
         setPacientCode(pacientCode);
-        setAge(getAge(dateOfBirth));
+        setAge();
         setPhoneNumber(phoneNumber);
         setDoctor(doctor);
         setDateOfBirth(dateOfBirth);
 
     }
+
 
     public String getCnp() {
         return cnp;
@@ -51,7 +54,7 @@ public class PersonalData {
     }
 
 
-    public void setAge(int age) {
+    public void setAge() {
         this.age = getAge(dateOfBirth);
     }
 
@@ -79,12 +82,12 @@ public class PersonalData {
         this.doctor = doctor;
     }
 
-    public static int getAge(Date dateOfBirth) {
+    public int getAge(Date dateOfBirth) {
 
         Calendar today = Calendar.getInstance();
         Calendar birthDate = Calendar.getInstance();
 
-        int age = 0;
+        this.age = 0;
 
         birthDate.setTime(dateOfBirth);
         if (birthDate.after(today)) {
@@ -106,4 +109,6 @@ public class PersonalData {
 
         return age;
     }
+
+
 }
