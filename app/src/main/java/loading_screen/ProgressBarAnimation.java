@@ -24,6 +24,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import ApiManager.ApiManager;
 import personal.data.PersonalData;
@@ -41,6 +50,8 @@ public class ProgressBarAnimation extends Animation {
     private Intent intent;
     private boolean persDat;
 
+    private File accountInforamtions;
+
     public ProgressBarAnimation(Context context,ProgressBar progressBar,float from,float to,PersonalData personalID){
         this.context = context;
         this.progressBar = progressBar;
@@ -50,8 +61,7 @@ public class ProgressBarAnimation extends Animation {
         setFields();
         intent = new Intent(context,MainActivity.class);
         personalData.setPacientCode(personalID.getPacientCode());
-
-
+        accountInforamtions = new File(context.getFilesDir(), "info.log");
     }
 
     @Override
@@ -60,7 +70,25 @@ public class ProgressBarAnimation extends Animation {
         float value = from + (to - from)*interpolatedTime;
         progressBar.setProgress((int)value);
         if(persDat){
+
+            saveAccountInfo();
             context.startActivity(intent);
+        }
+    }
+
+    private void saveAccountInfo(){
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(accountInforamtions);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+            ObjectOutputStream infoOut = new ObjectOutputStream(bufferedOutputStream);
+            infoOut.writeObject(personalData);
+            infoOut.close();
+            Log.d("LOADING","File saved in"+accountInforamtions.getAbsolutePath());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

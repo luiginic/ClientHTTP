@@ -10,12 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import personal.data.PersonalData;
 
@@ -38,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     public static Context ctx;
     private PersonalData personalData;
     private Intent intent;
+    File accountInforamtions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
 
         ctx = this.getApplicationContext();
         intent = new Intent(this, loading_screen.class);
+
+        checkAccountInfo();
+
         pacientID = (TextInputEditText) findViewById(R.id.pacient_id);
         pacientID.setHint(R.string.pacient_id);
 
@@ -60,6 +71,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void checkAccountInfo(){
+        try {
+            accountInforamtions = new File(this.getApplicationContext().getFilesDir(), "info.log");
+            Log.d("LOGIN","Searching for file in "+ accountInforamtions.getAbsolutePath());
+            if(accountInforamtions.exists()){
+                FileInputStream fileInputStream = new FileInputStream(accountInforamtions);
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+                ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);
+                personalData = (PersonalData) objectInputStream.readObject();
+                objectInputStream.close();
+                intent.putExtra("account",personalData);
+                this.startActivity(intent);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void attemptLogin(){
