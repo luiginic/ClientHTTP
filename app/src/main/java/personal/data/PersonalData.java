@@ -1,6 +1,8 @@
 package personal.data;
 
-
+/*
+Flavius Popescu
+ */
 
 import java.io.Serializable;
 import java.util.Calendar;

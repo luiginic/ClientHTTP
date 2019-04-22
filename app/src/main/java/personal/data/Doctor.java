@@ -1,5 +1,8 @@
 package personal.data;
 
+/*
+Flavius Popescu
+ */
 import java.io.Serializable;
 
 public class Doctor extends PersonalData implements Serializable {
