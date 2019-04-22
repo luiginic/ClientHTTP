@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.clienthttp">
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -16,6 +15,7 @@
         android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AccountInformationScreen"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
@@ -25,9 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loading_screen">
-
-        </activity>
+        <activity android:name=".loading_screen"></activity>
         <activity android:name=".MainActivity" />
     </application>
 

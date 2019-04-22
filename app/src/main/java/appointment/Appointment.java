@@ -9,8 +9,8 @@ import personal.data.PersonalData;
 
 public class Appointment {
 	
-	PersonalData person;
-	Date day;
+	private PersonalData person;
+	private Date day;
 
 	public PersonalData getPerson() {
 		return person;
