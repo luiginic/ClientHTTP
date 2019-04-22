@@ -3,13 +3,15 @@ import ApiManager.ApiManager;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView name;
     private PersonalData personalData = new PersonalData();
 
-//    final View statsView = findViewById(R.id.statsView);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,17 @@ public class MainActivity extends AppCompatActivity {
         personalData = (PersonalData) getIntent().getSerializableExtra("account");
         name.setText(personalData.getName());
         setAvatar();
+//        name.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                goToAccountDetails();
+//            }
+//        });
+    }
+
+    private void goToAccountDetails(){
+        Intent intent = new Intent(this, AccountInformationScreen.class);
+        this.startActivity(intent);
     }
 
     private void setAvatar(){

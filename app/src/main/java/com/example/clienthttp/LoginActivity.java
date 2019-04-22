@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     public static Context ctx;
     private PersonalData personalData;
     private Intent intent;
-    File accountInforamtions;
+    private File accountInforamtions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

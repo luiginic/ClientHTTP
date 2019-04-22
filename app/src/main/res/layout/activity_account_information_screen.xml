@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,8 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp">
@@ -36,7 +37,7 @@
                     android:layout_height="match_parent">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/avatar"
+                        android:id="@+id/avt"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
                         android:layout_marginStart="32dp"
@@ -46,12 +47,12 @@
                         android:src="@drawable/no_image_user"
                         app:civ_border_color="#d1b1b1"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/name"
+                        app:layout_constraintEnd_toStartOf="@+id/name2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/name2"
                         android:layout_width="0dp"
                         android:layout_height="90dp"
                         android:layout_marginStart="8dp"
@@ -66,7 +67,7 @@
                         app:autoSizeTextType="uniform"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/avatar"
+                        app:layout_constraintStart_toEndOf="@+id/avt"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingPrefix" />
                 </android.support.constraint.ConstraintLayout>
