@@ -85,7 +85,8 @@ public class PersonalData implements Serializable {
     }
 
     public int getAge(Date dateOfBirth) {
-
+        if (dateOfBirth == null)
+            return 0;
         Calendar today = Calendar.getInstance();
         Calendar birthDate = Calendar.getInstance();
 

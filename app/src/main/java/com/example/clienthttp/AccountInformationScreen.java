@@ -16,6 +16,7 @@ public class AccountInformationScreen extends AppCompatActivity {
     private CircleImageView avatar;
     private TextView pacientCNP;
     private TextView phoneNo;
+    private TextView birthDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ public class AccountInformationScreen extends AppCompatActivity {
         pacientCNP.setText("CNP: "+persoanlData.getCnp());
         phoneNo = findViewById(R.id.phoneNo);
         phoneNo.setText("Phone no.: "+persoanlData.getPhoneNumber());
+        birthDate = findViewById(R.id.birthDate);
+        birthDate.setText("Birth date: "+persoanlData.getDateOfBirth()+"\n"+"Age: "+persoanlData.getAge(persoanlData.getDateOfBirth()));
+
 
 
 

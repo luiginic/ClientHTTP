@@ -27,4 +27,6 @@
     <string name="pacient_id_default">Pacient ID: No ID assigned yet!</string>
     <string name="CNP_default">CNP: The persoanl numeric code is not set yet!</string>
     <string name="phoneNo_default">Phone no. : No phone number provided!</string>
+    <string name = "birthDate_default">Birth date: Birth date not provided!</string>
+
 </resources>
