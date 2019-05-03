@@ -74,9 +74,8 @@
 
             </android.support.v7.widget.CardView>
 
-
             <android.support.v7.widget.CardView
-                android:id="@+id/containerView2"
+                android:id="@+id/pacientIdContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -90,19 +89,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
                     <TextView
-                        android:id="@+id/pacientId"
+                        android:id="@+id/pacientID"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center_vertical"
                         android:text="@string/pacient_id_default"
-                        app:autoSizeMaxTextSize="50sp"
-                        app:autoSizeMinTextSize="50sp"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
                         app:autoSizeTextType="uniform"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +110,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/containerView3"
+                android:id="@+id/pacientCnpContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -128,19 +124,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
                     <TextView
-                        android:id="@+id/cnpView"
+                        android:id="@+id/pacientCNP"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center_vertical"
                         android:text="@string/CNP_default"
-                        app:autoSizeMaxTextSize="50sp"
-                        app:autoSizeMinTextSize="50sp"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
                         app:autoSizeTextType="uniform"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +145,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/phoneCard"
+                android:id="@+id/phoneNoContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -166,19 +159,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
                     <TextView
-                        android:id="@+id/phoneText"
+                        android:id="@+id/phoneNo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center_vertical"
                         android:text="@string/phoneNo_default"
-                        app:autoSizeMaxTextSize="50sp"
-                        app:autoSizeMinTextSize="50sp"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
                         app:autoSizeTextType="uniform"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

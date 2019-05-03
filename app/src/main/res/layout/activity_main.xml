@@ -63,6 +63,7 @@
                 app:layout_constraintStart_toEndOf="@+id/avatar"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingPrefix" />
+
         </android.support.constraint.ConstraintLayout>
 
         <View

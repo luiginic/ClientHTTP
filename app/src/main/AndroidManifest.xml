@@ -15,7 +15,6 @@
         android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountInformationScreen"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
@@ -27,6 +26,7 @@
         </activity>
         <activity android:name=".loading_screen"></activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".AccountInformationScreen"/>
     </application>
 
 </manifest>

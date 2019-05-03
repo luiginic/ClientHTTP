@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private  CircleImageView avatar;
     private TextView name;
     private PersonalData personalData = new PersonalData();
+    private Button infoScreen;
 
 
 
@@ -49,16 +50,18 @@ public class MainActivity extends AppCompatActivity {
         personalData = (PersonalData) getIntent().getSerializableExtra("account");
         name.setText(personalData.getName());
         setAvatar();
-//        name.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                goToAccountDetails();
-//            }
-//        });
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAccountDetails();
+            }
+        });
     }
 
     private void goToAccountDetails(){
         Intent intent = new Intent(this, AccountInformationScreen.class);
+        intent.putExtra("personalInfo",personalData);
+        intent.putExtra("avatar",(Bitmap)avatar.getDrawingCache());
         this.startActivity(intent);
     }
 
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Bitmap bitmap) {
                         Log.d(TAG,"Image recived");
                         avatar.setImageBitmap(bitmap);
+                        avatar.buildDrawingCache();
                         Log.d(TAG,"Avatar is set");
                     }
                 }, 0, 0, ImageView.ScaleType.CENTER, Bitmap.Config.RGB_565,
