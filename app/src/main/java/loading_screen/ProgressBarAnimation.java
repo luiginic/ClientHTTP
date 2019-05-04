@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
@@ -32,10 +34,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import ApiManager.ApiManager;
 import personal.data.PersonalData;
+
+import static java.security.AccessController.getContext;
 
 
 public class ProgressBarAnimation extends Animation {
@@ -69,6 +74,9 @@ public class ProgressBarAnimation extends Animation {
         super.applyTransformation(interpolatedTime, t);
         float value = from + (to - from)*interpolatedTime;
         progressBar.setProgress((int)value);
+        if(!isNetworkAvailable()){
+            checkAccountInfo();
+        }
         if(persDat){
 
             saveAccountInfo();
@@ -103,9 +111,9 @@ public class ProgressBarAnimation extends Animation {
                     public void onResponse(JSONObject response) {
                         try {
                             personalData.setName(response.get("name").toString());
-                            persDat = true;
                             intent.putExtra("account",personalData);
                             Log.d("LOADING","Name set!");
+                            persDat = true;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -114,7 +122,7 @@ public class ProgressBarAnimation extends Animation {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context,"Error fetching data!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"Error fetching data!",Toast.LENGTH_LONG).show();
                         intent.putExtra("account",personalData);
                         persDat = true;
                     }
@@ -138,6 +146,33 @@ public class ProgressBarAnimation extends Animation {
 //                });
 //
 //        ApiManager.getInstance(context).addToRequestQueue(imageRequest);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void checkAccountInfo(){
+        try {
+            accountInforamtions = new File(context.getFilesDir(), "info.log");
+            Log.d("LOGIN","Searching for file in "+ accountInforamtions.getAbsolutePath());
+            if(accountInforamtions.exists()){
+                FileInputStream fileInputStream = new FileInputStream(accountInforamtions);
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+                ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);
+                personalData = (PersonalData) objectInputStream.readObject();
+                objectInputStream.close();
+                intent.putExtra("account",personalData);
+                context.startActivity(intent);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 

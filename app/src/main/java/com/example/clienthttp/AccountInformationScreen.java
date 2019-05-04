@@ -27,14 +27,14 @@ public class AccountInformationScreen extends AppCompatActivity {
         name = findViewById(R.id.name2);
         name.setText(persoanlData.getName());
         pacientID = findViewById(R.id.pacientID);
-        pacientID.setText("Pacient ID: " + persoanlData.getPacientCode());
+        pacientID.setText(persoanlData.getPacientCode());
         avatar.setImageBitmap((Bitmap)getIntent().getParcelableExtra("avatar"));
         pacientCNP = findViewById(R.id.pacientCNP);
-        pacientCNP.setText("CNP: "+persoanlData.getCnp());
+        pacientCNP.setText(persoanlData.getCnp());
         phoneNo = findViewById(R.id.phoneNo);
-        phoneNo.setText("Phone no.: "+persoanlData.getPhoneNumber());
+        phoneNo.setText(persoanlData.getPhoneNumber());
         birthDate = findViewById(R.id.birthDate);
-        birthDate.setText("Birth date: "+persoanlData.getDateOfBirth()+"\n"+"Age: "+persoanlData.getAge(persoanlData.getDateOfBirth()));
+        birthDate.setText(persoanlData.getDateOfBirth()+"\n"+"Age: "+persoanlData.getAge(persoanlData.getDateOfBirth()));
 
 
 
