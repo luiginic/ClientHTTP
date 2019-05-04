@@ -30,8 +30,12 @@
     <string name="CNP_default">The persoanl numeric code is not set yet!</string>
     <string name="phoneNoTitle">Phone no.:</string>
     <string name="phoneNo_default">No phone number provided!</string>
-    <string name = "birthDate_default">Birth date not provided!</string>
+    <string name="birthDate_default">Birth date not provided!</string>
     <string name="nameTitle">Name:</string>
     <string name="birthDateTitle">Birth date:</string>
+    <string name="doctorTitle">Doctor:</string>
+    <string name="doctorAddressTitle">Address:</string>
+    <string name="doctorAddress_default">Unknown address for your doctor!</string>
+
 
 </resources>

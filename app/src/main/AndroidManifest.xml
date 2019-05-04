@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loading_screen"></activity>
+        <activity android:name=".loading_screen" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".AccountInformationScreen"/>
+        <activity android:name=".AccountInformationScreen" />
     </application>
 
 </manifest>

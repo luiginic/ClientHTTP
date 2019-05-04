@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,9 +45,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         viewTreatmentBtn = findViewById(R.id.viewTreatmentBtn);
 
-        if(!viewTreatmentBtn.isEnabled())
-            viewTreatmentBtn.setBackgroundResource(R.drawable.button_gradient_disabled);
-        else viewTreatmentBtn.setBackgroundResource(R.drawable.button_gradient);
+        if(isNetworkAvailable()){
+            viewTreatmentBtn.setEnabled(true);
+            setButtonCollor(viewTreatmentBtn);
+        } else {
+            viewTreatmentBtn.setEnabled(false);
+            setButtonCollor(viewTreatmentBtn);
+        }
+
+
         name = findViewById(R.id.name);
         personalData = (PersonalData) getIntent().getSerializableExtra("account");
         name.setText(personalData.getName());
@@ -56,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
                 goToAccountDetails();
             }
         });
+        viewTreatmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    private void goToTreatmentDetails(){
+        Intent intent = new Intent(this,AccountInformationScreen.class );
+        intent.putExtra("personalInfo",personalData);
+        intent.putExtra("avatar",(Bitmap)avatar.getDrawingCache());
+        this.startActivity(intent);
     }
 
     private void goToAccountDetails(){
@@ -113,6 +134,19 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         ApiManager.getInstance(this.getApplicationContext()).addToRequestQueue(imageRequest);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void setButtonCollor(Button btn){
+        if(!btn.isEnabled())
+            btn.setBackgroundResource(R.drawable.button_gradient_disabled);
+        else btn.setBackgroundResource(R.drawable.button_gradient);
     }
 
 
