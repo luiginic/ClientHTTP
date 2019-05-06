@@ -67,15 +67,14 @@ public class MainActivity extends AppCompatActivity {
         viewTreatmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                goToDataEntry();
             }
         });
     }
 
-    private void goToTreatmentDetails(){
-        Intent intent = new Intent(this,AccountInformationScreen.class );
+    private void goToDataEntry(){
+        Intent intent = new Intent(this,DataEntryActivity.class );
         intent.putExtra("personalInfo",personalData);
-        intent.putExtra("avatar",(Bitmap)avatar.getDrawingCache());
         this.startActivity(intent);
     }
 

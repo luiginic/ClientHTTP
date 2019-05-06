@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "0123456789"
+    public static final String[] DUMMY_CREDENTIALS = new String[]{
+            "123456789"
     };
 
     // UI references.
@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validateCode(String code){
-        if(code.length()==10)
+        if(code.length()==9)
             return true;
         return false;
     }

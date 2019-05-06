@@ -101,7 +101,7 @@ public class ProgressBarAnimation extends Animation {
     }
 
     private void setFields(){
-        String jsonURL = "https://api.myjson.com/bins/arg9u";
+        String jsonURL = "https://ro-medical-app.herokuapp.com/api/doctors/get?id=1";
 //        String imgURL = "https://cdn.shopify.com/s/files/1/3026/6974/files/happy-alpacas-landscape_1024x1024.jpg?v=1532619630";
 
         personalData = new PersonalData();
@@ -110,7 +110,7 @@ public class ProgressBarAnimation extends Animation {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            personalData.setName(response.get("name").toString());
+                            personalData.setName(response.get("first_name").toString());
                             intent.putExtra("account",personalData);
                             Log.d("LOADING","Name set!");
                             persDat = true;
