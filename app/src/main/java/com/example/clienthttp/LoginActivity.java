@@ -4,7 +4,6 @@ package com.example.clienthttp;
 import android.content.Context;
 
 import android.content.Intent;
-import android.support.annotation.StringRes;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,9 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
+
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -26,7 +24,6 @@ import java.io.ObjectInputStream;
 
 import personal.data.PersonalData;
 
-import static android.view.View.FOCUSABLE;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -63,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         personalData = new PersonalData();
 
-        Button continueBtn = (Button) findViewById(R.id.continueBtn);
+        Button continueBtn = findViewById(R.id.continueBtn);
         continueBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,9 +109,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validateCode(String code){
-        if(code.length()==9)
-            return true;
-        return false;
+        return code.length() == 9;
     }
 
 }
