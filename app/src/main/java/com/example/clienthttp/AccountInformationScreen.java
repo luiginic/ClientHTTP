@@ -1,5 +1,6 @@
 package com.example.clienthttp;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import personal.data.PersonalData;
 
 public class AccountInformationScreen extends AppCompatActivity {
 
-    private PersonalData persoanlData = new PersonalData();
+    private PersonalData personalData = new PersonalData();
     private TextView name;
     private TextView pacientID;
     private CircleImageView avatar;
@@ -23,21 +24,34 @@ public class AccountInformationScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_information_screen);
         avatar = findViewById(R.id.avt);
-        persoanlData = (PersonalData) getIntent().getSerializableExtra("personalInfo");
+        retrieveAccountDetails();
+//        persoanlData = (PersonalData) getIntent().getSerializableExtra("personalInfo");
         name = findViewById(R.id.name2);
-        name.setText(persoanlData.getName());
+        name.setText(personalData.getName());
         pacientID = findViewById(R.id.pacientID);
-        pacientID.setText(persoanlData.getPacientCode());
+        pacientID.setText(personalData.getPacientCode());
         avatar.setImageBitmap((Bitmap)getIntent().getParcelableExtra("avatar"));
         pacientCNP = findViewById(R.id.pacientCNP);
-        pacientCNP.setText(persoanlData.getCnp());
+        pacientCNP.setText(personalData.getCnp());
         phoneNo = findViewById(R.id.phoneNo);
-        phoneNo.setText(persoanlData.getPhoneNumber());
+        phoneNo.setText(personalData.getPhoneNumber());
         birthDate = findViewById(R.id.birthDate);
-        birthDate.setText(persoanlData.getDateOfBirth()+"\n"+"Age: "+persoanlData.getAge(persoanlData.getDateOfBirth()));
+        birthDate.setText(personalData.getDateOfBirth()+"\n"+"Age: "+personalData.getAge(personalData.getDateOfBirth()));
 
 
 
 
+    }
+    private void retrieveAccountDetails(){
+        SharedPreferences prefs = getSharedPreferences("info.log", MODE_PRIVATE);
+        String restoredText = prefs.getString("pacientId", null);
+        if (restoredText != null) {
+            personalData.setPacientCode(prefs.getString("pacientId","")); //null is the default value.
+            personalData.setName(prefs.getString("name", getResources().getString(R.string.name_goes_here)));//"getResources().getString(R.string.name_goes_here" = "Name goes here" and it  is the default value.
+            personalData.setPhoneNumber(prefs.getString("phoneNo",getResources().getString(R.string.phoneNo_default)));
+            personalData.setCnp(prefs.getString("pacientCnp",getResources().getString(R.string.CNP_default)));
+            //TODO change the way birthday is stored
+
+        }
     }
 }

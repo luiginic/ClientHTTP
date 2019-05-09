@@ -5,6 +5,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         name = findViewById(R.id.name);
-        personalData = (PersonalData) getIntent().getSerializableExtra("account");
+        retrieveAccountDetails();
         name.setText(personalData.getName());
         setAvatar();
         avatar.setOnClickListener(new View.OnClickListener() {
@@ -78,9 +79,19 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    private void retrieveAccountDetails(){
+        SharedPreferences prefs = getSharedPreferences("info.log", MODE_PRIVATE);
+        String restoredText = prefs.getString("pacientId", null);
+        if (restoredText != null) {
+            //personalData.setPacientCode(prefs.getString("pacientId","")); //null is the default value.
+            personalData.setName(prefs.getString("name", getResources().getString(R.string.name_goes_here)));//"getResources().getString(R.string.name_goes_here)" = "Name goes here" and it  is the default value.
+           //personalData.setPhoneNumber(prefs.getString("phoneNo",getResources().getString(R.string.phoneNo_default)));//"getResources().getString(R.string.phoneNo_default)" = "No Phone No. provided" - default value
+        }
+    }
+
     private void goToAccountDetails(){
         Intent intent = new Intent(this, AccountInformationScreen.class);
-        intent.putExtra("personalInfo",personalData);
+//        intent.putExtra("personalInfo",personalData);
         intent.putExtra("avatar",(Bitmap)avatar.getDrawingCache());
         this.startActivity(intent);
     }
