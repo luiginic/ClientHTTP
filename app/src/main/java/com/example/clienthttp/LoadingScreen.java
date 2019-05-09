@@ -1,6 +1,7 @@
 package com.example.clienthttp;
 
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,11 +15,11 @@ import personal.data.PersonalData;
 
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 
-public class loading_screen extends AppCompatActivity {
+public class LoadingScreen extends AppCompatActivity {
 
     ProgressBar progressBar;
     ImageView logo;
-    private static final String TAG = "CLIENT.loading_screen";
+    private static final String TAG = "CLIENT.LoadingScreen";
     PersonalData personalData = new PersonalData();
 
     @Override
@@ -32,7 +33,8 @@ public class loading_screen extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         logo=findViewById(R.id.logo);
 
-        personalData = (PersonalData) this.getIntent().getSerializableExtra("account");
+        SharedPreferences prefs = getSharedPreferences("info.log", MODE_PRIVATE);
+        personalData.setPacientCode(prefs.getString("pacientId",null));
 
         progressBar.setMax(100);
         progressBar.setScaleY(3f);

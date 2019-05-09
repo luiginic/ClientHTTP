@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.clienthttp.LoginActivity;
 import com.example.clienthttp.MainActivity;
 
 
@@ -40,6 +42,7 @@ import java.io.ObjectOutputStream;
 import ApiManager.ApiManager;
 import personal.data.PersonalData;
 
+import static android.content.Context.MODE_PRIVATE;
 import static java.security.AccessController.getContext;
 
 
@@ -76,8 +79,7 @@ public class ProgressBarAnimation extends Animation {
         progressBar.setProgress((int)value);
         if(!isNetworkAvailable()){
             checkAccountInfo();
-        }
-        if(persDat){
+        }else if(persDat){
 
             saveAccountInfo();
             context.startActivity(intent);
@@ -85,19 +87,28 @@ public class ProgressBarAnimation extends Animation {
     }
 
     private void saveAccountInfo(){
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(accountInforamtions);
-            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-            ObjectOutputStream infoOut = new ObjectOutputStream(bufferedOutputStream);
-            infoOut.writeObject(personalData);
-            infoOut.close();
-            Log.d("LOADING","File saved in"+accountInforamtions.getAbsolutePath());
+        //With share preferences
+        SharedPreferences.Editor editor = context.getSharedPreferences("info.log", MODE_PRIVATE).edit();
+        editor.clear();
+        editor.putString("name", personalData.getName());
+        editor.putString("pacientId", personalData.getPacientCode());
+        editor.putString("phoneNo",personalData.getPhoneNumber());
+        editor.apply();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //Old version...
+//        try {
+//            FileOutputStream fileOutputStream = new FileOutputStream(accountInforamtions);
+//            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+//            ObjectOutputStream infoOut = new ObjectOutputStream(bufferedOutputStream);
+//            infoOut.writeObject(personalData);
+//            infoOut.close();
+//            Log.d("LOADING","File saved in"+accountInforamtions.getAbsolutePath());
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void setFields(){
@@ -110,8 +121,9 @@ public class ProgressBarAnimation extends Animation {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            personalData.setName(response.get("first_name").toString());
-                            intent.putExtra("account",personalData);
+                            personalData.setName(response.get("first_name").toString()+" "+response.getString("last_name"));
+                            personalData.setPhoneNumber(response.getString("tel"));
+//                            intent.putExtra("account",personalData);
                             Log.d("LOADING","Name set!");
                             persDat = true;
                         } catch (JSONException e) {
@@ -122,8 +134,8 @@ public class ProgressBarAnimation extends Animation {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context,"Error fetching data!",Toast.LENGTH_LONG).show();
-                        intent.putExtra("account",personalData);
+                        Toast.makeText(context,"Could not connect to the server!",Toast.LENGTH_LONG).show();
+//                        intent.putExtra("account",personalData);
                         persDat = true;
                     }
                 });
@@ -156,23 +168,36 @@ public class ProgressBarAnimation extends Animation {
     }
 
     private void checkAccountInfo(){
-        try {
-            accountInforamtions = new File(context.getFilesDir(), "info.log");
-            Log.d("LOGIN","Searching for file in "+ accountInforamtions.getAbsolutePath());
-            if(accountInforamtions.exists()){
-                FileInputStream fileInputStream = new FileInputStream(accountInforamtions);
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-                ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);
-                personalData = (PersonalData) objectInputStream.readObject();
-                objectInputStream.close();
-                intent.putExtra("account",personalData);
-                context.startActivity(intent);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        //With share preferences
+        SharedPreferences prefs = context.getSharedPreferences("info.log", MODE_PRIVATE);
+        String restoredText = prefs.getString("pacientId", null);
+        if (restoredText != null) {
+            context.startActivity(intent);
         }
+//        else {
+//            Toast.makeText(context, "Connect to internet and login first!", Toast.LENGTH_LONG).show();
+//            Intent intentLogin = new Intent(context, LoginActivity.class);
+//            context.startActivity(intentLogin);
+//        }
+
+        //Old version...
+//        try {
+//            accountInforamtions = new File(this.getApplicationContext().getFilesDir(), "info.log");
+//            Log.d("LOGIN","Searching for file in "+ accountInforamtions.getAbsolutePath());
+//            if(accountInforamtions.exists()){
+//                FileInputStream fileInputStream = new FileInputStream(accountInforamtions);
+//                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+//                ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);
+//                personalData = (PersonalData) objectInputStream.readObject();
+//                objectInputStream.close();
+//                intent.putExtra("account",personalData);
+//                this.startActivity(intent);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
