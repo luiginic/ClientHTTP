@@ -2,11 +2,11 @@
     <string name="app_name">ClientHTTP</string>
     <string name="profileInfo">Profile info</string>
     <string name="name_goes_here">Name goes here</string>
-    <string name="treatment">View treatment</string>
+
     <string name="reactions">Reactions</string>
     <string name="title_activity_stats_screen">StatsScreen</string>
     <string name="my_apointments">My apointments</string>
-    <string name="make_an_apointment">Make an apointment</string>
+
     <string name="this_is_the_logo">This is the logo</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
@@ -23,7 +23,6 @@
     </string>
     <!--Strings related to persoanl details-->
     <string name="pacient_id">Pacient ID</string>
-    <string name="continueBtn">Continue</string>
     <string name="log_in">Log in</string>
     <string name="pacientIdTitle">Pacient ID:</string>
     <string name="pacient_id_default">No ID assigned yet!</string>
@@ -37,6 +36,11 @@
     <string name="doctorTitle">Doctor:</string>
     <string name="doctorAddressTitle">Address:</string>
     <string name="doctorAddress_default">Unknown address for your doctor!</string>
+    <!--Strings related to buttons-->
+    <string name="send_btn">Send</string>
+    <string name="treatment">View treatment</string>
+    <string name="make_an_apointment">Make an apointment</string>
+    <string name="continueBtn">Continue</string>
 
 
 </resources>

@@ -86,12 +86,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:layout_constraintVertical_bias="0.03">
+            app:layout_constraintTop_toBottomOf="@+id/divider">
 
             <View
                 android:id="@+id/statHorizDivider"
@@ -147,18 +146,20 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="40dp"
+                android:layout_marginBottom="14dp"
                 android:background="@drawable/button_gradient"
                 android:elevation="10dp"
                 android:enabled="false"
                 android:text="@string/treatment"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/makeAnAppontment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/reportChangesBtn"
+                android:id="@+id/makeAnAppontment"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="40dp"

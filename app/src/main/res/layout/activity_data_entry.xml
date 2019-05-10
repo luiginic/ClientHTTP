@@ -23,7 +23,7 @@
             android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             card_view:cardCornerRadius="20dp"
-            card_view:cardElevation="0dp">
+            card_view:cardElevation="5dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -120,7 +120,7 @@
             android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             card_view:cardCornerRadius="20dp"
-            card_view:cardElevation="0dp">
+            card_view:cardElevation="5dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -208,7 +208,7 @@
             android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             card_view:cardCornerRadius="20dp"
-            card_view:cardElevation="0dp">
+            card_view:cardElevation="5dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -294,7 +294,7 @@
             android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             card_view:cardCornerRadius="20dp"
-            card_view:cardElevation="0dp">
+            card_view:cardElevation="5dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -382,7 +382,7 @@
             android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             card_view:cardCornerRadius="20dp"
-            card_view:cardElevation="0dp">
+            card_view:cardElevation="5dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -449,14 +449,18 @@
 
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_marginStart="72dp"
             android:layout_marginEnd="72dp"
             android:layout_gravity="center"
             android:layout_height="50dp"
             android:onClick="sendDailyData"
             android:background="@drawable/button_gradient_whites"
-            android:text="Send" />
+            android:text="@string/send_btn"
+            android:drawableStart="@drawable/ic_send_black_24dp"
+            android:paddingStart="46dp"
+            android:paddingEnd="46dp"
+             />
 
 
 
