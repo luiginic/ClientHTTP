@@ -11,6 +11,8 @@ import android.graphics.Bitmap;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.example.clienthttp.treatment.ViewPagerAdapter;
 
 import personal.data.PersonalData;
 
@@ -36,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private  CircleImageView avatar;
     private TextView name;
     private PersonalData personalData = new PersonalData();
-    private Button infoScreen;
-
-
+    private ViewPager mesurementsPager;
+    private ViewPagerAdapter mesurementsPagerAdapter;
+    private TabLayout mesurementsTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
             setButtonCollor(viewTreatmentBtn);
         }
 
-
         name = findViewById(R.id.name);
         retrieveAccountDetails();
         name.setText(personalData.getName());
+
         setAvatar();
+
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
                 goToDataEntry();
             }
         });
+
+        mesurementsPager = findViewById(R.id.mesurmentsView);
+        mesurementsPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        mesurementsPager.setAdapter(mesurementsPagerAdapter);
+        mesurementsTab = findViewById(R.id.tabLayout);
+        mesurementsTab.setupWithViewPager(mesurementsPager);
+
     }
 
     private void goToDataEntry(){
