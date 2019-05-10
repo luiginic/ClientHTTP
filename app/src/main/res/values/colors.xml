@@ -9,4 +9,5 @@
     <color name="buttonGradientLightDisable">#564DD3FF</color>
     <color name="buttonGradientDarkDisable">#5600AFFF</color>
     <color name="colorAccentBlue">#D2F7FF</color>
+    <color name="colorAccentSemiTransparent">#40D2F7FF</color>
 </resources>
