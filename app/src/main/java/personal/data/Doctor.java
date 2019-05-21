@@ -11,4 +11,8 @@ public class Doctor extends PersonalData implements Serializable {
     public void setCabinetAddress(String cabinetAddress) {
         this.cabinetAddress = cabinetAddress;
     }
+
+    public String getCabinetAddress() {
+        return cabinetAddress;
+    }
 }

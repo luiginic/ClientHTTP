@@ -102,13 +102,13 @@
                     android:text="@string/continueBtn"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/reportChangesBtn"
+                    app:layout_constraintBottom_toTopOf="@+id/makeAnAppointment"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/reportChangesBtn"
+                    android:id="@+id/makeAnAppointment"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="40dp"

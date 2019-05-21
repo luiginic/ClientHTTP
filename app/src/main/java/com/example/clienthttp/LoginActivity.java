@@ -5,6 +5,7 @@ import android.content.Context;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import java.io.File;
@@ -24,13 +26,7 @@ import personal.data.PersonalData;
 
 public class LoginActivity extends AppCompatActivity {
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    public static final String[] DUMMY_CREDENTIALS = new String[]{
-            "123456789"
-    };
+
 
     // UI references.
     private TextInputEditText pacientID;
@@ -38,11 +34,13 @@ public class LoginActivity extends AppCompatActivity {
     public static Context ctx;
     private PersonalData personalData;
     private Intent intent;
-    private File accountInforamtions;
+    private Button continueBtn;
+    private Button makeAnAppointmentBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Set up the login form.
 
         ctx = this.getApplicationContext();
@@ -56,11 +54,21 @@ public class LoginActivity extends AppCompatActivity {
 
         personalData = new PersonalData();
 
-        Button continueBtn = findViewById(R.id.continueBtn);
+        continueBtn = findViewById(R.id.continueBtn);
         continueBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        makeAnAppointmentBtn = findViewById(R.id.makeAnAppointment);
+        makeAnAppointmentBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Unavailable at this moment!",Toast.LENGTH_LONG).show();
+                makeAnAppointmentBtn.setEnabled(false);
+                setButtonCollor(makeAnAppointmentBtn);
             }
         });
 
@@ -98,17 +106,11 @@ public class LoginActivity extends AppCompatActivity {
         String code = pacientID.getText().toString();
         if(this.validateCode(code)) {
             personalData.setPacientCode(code);
-            for (String it : DUMMY_CREDENTIALS) {
-                if (it.equals(personalData.getPacientCode())) {
-//                    intent.putExtra("account",personalData.getPacientCode());
-                    SharedPreferences.Editor editor = this.getSharedPreferences("info.log", MODE_PRIVATE).edit();
-                    editor.clear();
-                    editor.putString("pacientId",personalData.getPacientCode());
-                    editor.apply();
-                            this.startActivity(intent);
-                }
-                else pacientID.setError("The provided ID is incorect!");
-            }
+            SharedPreferences.Editor editor = this.getSharedPreferences("info.log", MODE_PRIVATE).edit();
+            editor.clear();
+            editor.putString("pacientId",personalData.getPacientCode());
+            editor.apply();
+            this.startActivity(intent);
         } else {
             pacientID.setError("The provided ID is invalid!");
             pacientID.requestFocus();
@@ -117,7 +119,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validateCode(String code){
-        return code.length() == 9;
+        return code.length() >=1;
+    }
+    protected void setButtonCollor(Button btn){
+        if(!btn.isEnabled())
+            btn.setBackgroundResource(R.drawable.button_gradient_disabled);
+        else btn.setBackgroundResource(R.drawable.button_gradient);
     }
 
 }

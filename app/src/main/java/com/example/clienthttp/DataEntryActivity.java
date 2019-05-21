@@ -1,5 +1,7 @@
 package com.example.clienthttp;
 
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -57,6 +59,7 @@ public class DataEntryActivity extends AppCompatActivity implements SensorEventL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_entry);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         numberOfGlassesTV = findViewById(R.id.number_of_glasses);
         glassesText = findViewById(R.id.glasses_text);
@@ -196,7 +199,8 @@ public class DataEntryActivity extends AppCompatActivity implements SensorEventL
         Integer pulse       = Integer.parseInt(pulseBPM.getText().toString());
         Integer temperature = Integer.parseInt(tempInCelsius.getText().toString());
         Integer steps       = Integer.parseInt(stepsText.getText().toString());
-        Integer pacient_id  = Integer.parseInt(LoginActivity.DUMMY_CREDENTIALS[0]);
+        SharedPreferences prefs = getSharedPreferences("info.log",MODE_PRIVATE);
+        Integer pacient_id  = Integer.parseInt(prefs.getString("pacientId",null));
 
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String today = df.format(Calendar.getInstance().getTime());

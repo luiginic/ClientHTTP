@@ -6,6 +6,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 
 
@@ -20,8 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
+import android.widget.Toast;
 
 
 import com.android.volley.Response;
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "CLIENT.MainActivity";
 
     private Button viewTreatmentBtn;
+    private Button makeAnAppointmentBtn;
     private  CircleImageView avatar;
     private TextView name;
     private PersonalData personalData = new PersonalData();
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewTreatmentBtn = findViewById(R.id.viewTreatmentBtn);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if(isNetworkAvailable()){
             viewTreatmentBtn.setEnabled(true);
@@ -73,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goToDataEntry();
+            }
+        });
+        makeAnAppointmentBtn=findViewById(R.id.makeAnAppointment);
+        makeAnAppointmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Unavailable at this moment!",Toast.LENGTH_LONG).show();
+                makeAnAppointmentBtn.setEnabled(false);
+                setButtonCollor(makeAnAppointmentBtn);
             }
         });
 
@@ -164,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    private void setButtonCollor(Button btn){
+    protected void setButtonCollor(Button btn){
         if(!btn.isEnabled())
             btn.setBackgroundResource(R.drawable.button_gradient_disabled);
         else btn.setBackgroundResource(R.drawable.button_gradient);

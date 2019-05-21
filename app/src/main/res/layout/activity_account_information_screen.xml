@@ -1,420 +1,421 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradient_background"
-        tools:context=".MainActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".MainActivity">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:paddingBottom="16dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/containerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:orientation="vertical"
-            android:paddingBottom="16dp"
-            >
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/containerView"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avt"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/no_image_user"
+                    app:civ_border_color="#d1b1b1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/name2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/avt"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:foregroundGravity="center"
-                        android:src="@drawable/no_image_user"
-                        app:civ_border_color="#d1b1b1"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/name2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/name_goes_here"
+                    app:autoSizeMaxTextSize="100sp"
+                    app:autoSizeMinTextSize="20sp"
+                    app:autoSizeStepGranularity="18sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/avt"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
+            </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/name2"
-                        android:layout_width="0dp"
-                        android:layout_height="90dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/name_goes_here"
-                        app:autoSizeMaxTextSize="100sp"
-                        app:autoSizeMinTextSize="20sp"
-                        app:autoSizeStepGranularity="18sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/avt"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
-                </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/pacientIdContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/pacientIdContainer"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/pacientIDTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/pacientIdTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/pacientIDTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/pacientIdTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/pacientID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/pacient_id_default"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/pacientIDTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
+            </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/pacientID"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/pacient_id_default"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/pacientIDTitle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
-                </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/pacientCnpContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/pacientCnpContainer"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/PacientCnpTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/cnpTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/PacientCnpTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/cnpTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/pacientCNP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/CNP_default"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/PacientCnpTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
+            </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/pacientCNP"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/CNP_default"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/PacientCnpTitle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
-                </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/phoneNoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/phoneNoContainer"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/phoneNoTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/phoneNoTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/phoneNoTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/phoneNoTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/phoneNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/phoneNo_default"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/phoneNoTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
+            </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/phoneNo"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/phoneNo_default"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/phoneNoTitle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
-                </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/birthDateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/birthDateContainer"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/birthDateTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/birthDateTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/birthDateTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/birthDateTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/birthDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/birthDate_default"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/birthDateTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingPrefix" />
+            </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/birthDate"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/birthDate_default"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/birthDateTitle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingPrefix" />
-                </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/doctorContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/doctorContainer"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent"
+                android:layout_gravity="top">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/doctorTitle"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toTopOf="@id/divider2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/doctorTitle"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toTopOf="@+id/doctorNameTitle"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/doctorNameTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/nameTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/doctorPhoneNoTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/doctorNameTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/nameTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toTopOf="@+id/doctorPhoneNoTitle"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/divider2"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/doctorName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/name_goes_here"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/doctorPhoneNoTitle"
 
-                    <TextView
-                        android:id="@+id/doctorName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/name_goes_here"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toTopOf="@+id/doctorPhoneNoTitle"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/doctorNameTitle"
-                        app:layout_constraintTop_toBottomOf="@+id/divider2"
-                        tools:ignore="MissingPrefix" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/doctorNameTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    tools:ignore="MissingPrefix" />
 
-                    <View
-                        android:id="@+id/divider2"
-                        android:layout_width="379dp"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="?android:attr/listDivider"
-                        app:layout_constraintBottom_toTopOf="@+id/doctorName"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="379dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/doctorName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-                    <TextView
-                        android:id="@+id/doctorPhoneNoTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/phoneNoTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/doctorNameTitle"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/doctorPhoneNoTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/phoneNoTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/doctorAddressTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorNameTitle"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/doctorPhoneNo"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/phoneNo_default"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintBottom_toTopOf="@+id/doctorAddressTitle"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/doctorPhoneNoTitle"
-                        app:layout_constraintTop_toBottomOf="@+id/doctorName"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/doctorPhoneNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/phoneNo_default"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/doctorAddressTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/doctorPhoneNoTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorName"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/doctorAddressTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/doctorAddressTitle"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/doctorPhoneNoTitle"
-                        tools:ignore="MissingPrefix" />
+                <TextView
+                    android:id="@+id/doctorAddressTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/doctorAddressTitle"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorPhoneNoTitle"
+                    tools:ignore="MissingPrefix" />
 
-                    <TextView
-                        android:id="@+id/doctorAddress"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/doctorAddress_default"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/doctorAddressTitle"
-                        app:layout_constraintTop_toBottomOf="@+id/doctorPhoneNo"
-                        tools:ignore="MissingPrefix" />
-                </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/doctorAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/doctorAddress_default"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/doctorAddressTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorPhoneNo"
+                    tools:ignore="MissingPrefix" />
+            </android.support.constraint.ConstraintLayout>
 
-            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+</ScrollView>

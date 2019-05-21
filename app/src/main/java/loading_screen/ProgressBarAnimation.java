@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.clienthttp.LoginActivity;
 import com.example.clienthttp.MainActivity;
+import com.google.gson.JsonObject;
 
 
 import org.json.JSONException;
@@ -38,8 +39,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import ApiManager.ApiManager;
+import personal.data.Doctor;
 import personal.data.PersonalData;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -66,7 +69,7 @@ public class ProgressBarAnimation extends Animation {
         this.from = from;
         this.to = to;
         persDat = false;
-        setFields();
+        setFields(personalID.getPacientCode());
         intent = new Intent(context,MainActivity.class);
         personalData.setPacientCode(personalID.getPacientCode());
         accountInforamtions = new File(context.getFilesDir(), "info.log");
@@ -93,6 +96,9 @@ public class ProgressBarAnimation extends Animation {
         editor.putString("name", personalData.getName());
         editor.putString("pacientId", personalData.getPacientCode());
         editor.putString("phoneNo",personalData.getPhoneNumber());
+        editor.putString("doctorName",personalData.getDoctor().getName());
+        editor.putString("doctorPhoneNo",personalData.getDoctor().getPhoneNumber());
+        editor.putString("doctorAdd",personalData.getDoctor().getCabinetAddress());
         editor.apply();
 
         //Old version...
@@ -111,8 +117,8 @@ public class ProgressBarAnimation extends Animation {
 //        }
     }
 
-    private void setFields(){
-        String jsonURL = "https://ro-medical-app.herokuapp.com/api/doctors/get?id=1";
+    private void setFields(String patientId){
+        String jsonURL = "https://ro-medical-app.herokuapp.com/api/patients/get?id="+patientId;
 //        String imgURL = "https://cdn.shopify.com/s/files/1/3026/6974/files/happy-alpacas-landscape_1024x1024.jpg?v=1532619630";
 
         personalData = new PersonalData();
@@ -121,10 +127,18 @@ public class ProgressBarAnimation extends Animation {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            personalData.setName(response.get("first_name").toString()+" "+response.getString("last_name"));
+                            personalData.setName(response.getString("firstName")+" "+response.getString("lastName"));
                             personalData.setPhoneNumber(response.getString("tel"));
 //                            intent.putExtra("account",personalData);
                             Log.d("LOADING","Name set!");
+                            JSONObject doctor = response.getJSONObject("doctor");
+                            Doctor doc = new Doctor();
+                            doc.setName(doctor.getString("firstName")+" "+response.getString("lastName"));
+                            doc.setPhoneNumber(doctor.getString("tel"));
+                            doc.setCabinetAddress(doctor.getString("hospital"));
+                            Log.d("LOADING","Doctor parsed");
+                            personalData.setDoctor(doc);
+                            Log.d("LOADING","Doctor set");
                             persDat = true;
                         } catch (JSONException e) {
                             e.printStackTrace();
